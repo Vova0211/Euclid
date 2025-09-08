@@ -1,0 +1,25 @@
+@mixin bg-image($url, $pos: center, $repeat: no-repeat, $size: contain) {
+    background-image: url("../utils/#{$url}");
+    background-position: $pos;
+    background-repeat: $repeat;
+    background-size: $size;
+}
+@mixin flex {
+    display: flex;
+    @content;
+}
+.header {
+    box-shadow: 0px 5px 40px 0px rgba(0, 0, 0, 0.1);
+    border-bottom-right-radius: 32px;
+    border-bottom-left-radius: 32px;
+    @include flex() {
+        align-items: center;
+        justify-content: space-between;
+    }
+    min-height: 100px;
+    .header__logo {
+        @include bg-image("header__logo.svg");
+        min-width: 225px;
+        min-height: 72px;
+    }
+}
