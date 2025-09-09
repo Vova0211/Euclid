@@ -1,3 +1,4 @@
+@import url(./normolize.css);
 * {
   box-sizing: border-box;
 }
@@ -15,7 +16,7 @@
   min-height: 100px;
 }
 .header .header__logo {
-  background-image: url("../utils/header__logo.svg");
+  background-image: url("../src/utils/header__logo.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -40,7 +41,7 @@
   color: black;
 }
 .header .nav-list .nav-list__search {
-  background-image: url("../utils/nav-list__search.svg");
+  background-image: url("../src/utils/nav-list__search.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

@@ -1,6 +1,6 @@
+@import url(./normolize.css);
 @mixin bg-image($url, $pos: center, $repeat: no-repeat, $size: contain) {
-    background-image: url("../utils/#{$url}");
-    // background-image: url($url);
+    background-image: url("../src/utils/#{$url}");
     background-position: $pos;
     background-repeat: $repeat;
     background-size: $size;
