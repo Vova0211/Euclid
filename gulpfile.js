@@ -11,15 +11,16 @@ function buildStyles() {
 };
 
 function cleanStyles() {
-  return gulp.src('src/css/**/*.css') // Указываете путь к вашим CSS-файлам
+  return gulp.src('src/styles/style.css') // Указываете путь к вашим CSS-файлам
     .pipe(cleanCSS()) // Минифицирует CSS, удаляя лишние пробелы
-    .pipe(gulp.dest('dist/css')); // Куда будет сохранен минифицированный файл
+    .pipe(gulp.dest('dist/')); // Куда будет сохранен минифицированный файл
 }
 
 exports.buildStyles = buildStyles;
 exports.default = function () {
+  cleanStyles();
   gulp.watch('./src/styles/style.scss', buildStyles);
-
+  gulp.watch('./src/styles/style.css', cleanStyles);
 };
 /*const changeScssToCss = 
 
