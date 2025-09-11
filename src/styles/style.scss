@@ -1,9 +1,12 @@
-@import url(./normolize.css);
+@import url(normolize.css);
 @mixin bg-image($url, $pos: center, $repeat: no-repeat, $size: contain) {
-    background-image: url("../src/utils/#{$url}");
+    background-image: url(img-path($url));
     background-position: $pos;
     background-repeat: $repeat;
     background-size: $size;
+}
+@function img-path($name) {
+    @return "../src/utils/#{$name}";
 }
 @mixin flex {
     display: flex; 
@@ -51,5 +54,25 @@
             @include bg-image("nav-list__search.svg");
             min-width: 24px;
         } 
+    }
+}
+.main {
+    max-width: 1920px;
+    padding: 0 75px;
+    .hero {
+        width: 100%;
+        @include flex() {
+            flex-wrap: nowrap;
+            overflow: hidden;
+        }
+        .hero__img {
+            width: 100%;
+            border-radius: 32px;
+        }
+        @for $i from 1 through 3 {
+            .hero__img#{$i} {
+                content: url(img-path("hero__img#{$i}.png"));
+            }
+        }
     }
 }

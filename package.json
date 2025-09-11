@@ -3,15 +3,18 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx gulp build",
+    "start": "npx gulp"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "browser-sync": "^3.0.4",
     "gulp": "^5.0.1",
     "gulp-clean-css": "^4.3.0",
     "gulp-cli": "^3.1.0",
+    "gulp-htmlmin": "^5.0.1",
     "gulp-sass": "^6.0.1",
     "gulp-uglify": "^3.0.2",
     "sass": "^1.92.1"

@@ -1,29 +1,43 @@
-const gulp = require('gulp');
+const {src, dest, watch, series, parallel} = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const cleanCSS = require('gulp-clean-css');
+const uglify = require('gulp-uglify');
+const htmlmin = require('gulp-htmlmin');
+const browserSync = require('browser-sync').create();
 
 function buildStyles() {
-  console.log("Translate scss to css...")
-  return gulp.src('./src/styles/style.scss')
+  return src('./src/styles/style.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./src/styles'));
+    .pipe(cleanCSS())
+    .pipe(dest('build/'));
 };
 
-function cleanStyles() {
-  return gulp.src('src/styles/style.css') // Указываете путь к вашим CSS-файлам
-    .pipe(cleanCSS()) // Минифицирует CSS, удаляя лишние пробелы
-    .pipe(gulp.dest('dist/')); // Куда будет сохранен минифицированный файл
+function cleanJs() {
+  return src('src/js/index.js')
+    .pipe(uglify())
+    .pipe(dest('build/'));
 }
 
-exports.buildStyles = buildStyles;
-exports.default = function () {
-  cleanStyles();
-  gulp.watch('./src/styles/style.scss', buildStyles);
-  gulp.watch('./src/styles/style.css', cleanStyles);
-};
-/*const changeScssToCss = 
-
-const watcherScss = () => {
-  watch('src/styles/style.scss', )
+function cleanHTML() {
+  return src('src/pages/index.html')
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(dest('build/'));
 }
-exports.default = watcherScss*/
+
+function watchStyle() { watch('src/styles/style.scss', buildStyles)}
+function watchJS() {  watch('src/js/index.js', cleanJs)}
+function watchHTML() {  watch('src/pages/index.html', cleanHTML)}
+// function() {watch('build/*', browsersync)}
+
+/*
+function browsersync() {
+  browserSync.init({
+    server: {baseDir: "build/"},
+    notify: false,
+    online: true,
+  })
+}
+exports.cleanHTML = cleanHTML;
+exports.browsersync = browsersync;*/
+exports.build = series(buildStyles, cleanJs, cleanHTML)
+exports.default = parallel(watchHTML, watchJS, watchStyle)
