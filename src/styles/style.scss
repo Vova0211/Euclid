@@ -60,14 +60,20 @@
     max-width: 1920px;
     padding: 0 75px;
     .hero {
+        // transform: skewX(10px);
+        user-select: none;
         width: 100%;
-        @include flex() {
-            flex-wrap: nowrap;
-            overflow: hidden;
+        overflow-x: hidden;
+        .hero__track {
+            @include flex(){
+                flex-wrap: nowrap;
+            }
+            // transform: translateX(-100px);
         }
         .hero__img {
             width: 100%;
             border-radius: 32px;
+            pointer-events: none;
         }
         @for $i from 1 through 3 {
             .hero__img#{$i} {
