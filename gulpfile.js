@@ -12,8 +12,9 @@ function buildStyles() {
     .pipe(dest('build/'));
 }
 
-function cleanMedia() {
-  return src('./src/styles/media.css')
+function buildMedia() {
+  return src('./src/styles/media.scss')
+    .pipe(sass().on('error', sass.logError))
     .pipe(cleanCSS())
     .pipe(dest('build/'));
 }
@@ -33,7 +34,7 @@ function cleanHTML() {
 function watchStyle() { watch('src/styles/style.scss', buildStyles)}
 function watchJS() {  watch('src/js/index.js', cleanJs)}
 function watchHTML() {  watch('src/pages/index.html', cleanHTML)}
-function watchMedia() { watch('src/styles/media.css', cleanMedia)}
+function watchMedia() { watch('src/styles/media.scss', buildMedia)}
 // function() {watch('build/*', browsersync)}
 
 /*
@@ -46,5 +47,5 @@ function browsersync() {
 }
 exports.cleanHTML = cleanHTML;
 exports.browsersync = browsersync;*/
-exports.build = series(buildStyles, cleanMedia, cleanJs, cleanHTML)
+exports.build = series(buildStyles, buildMedia, cleanJs, cleanHTML)
 exports.default = parallel(watchHTML, watchJS, watchStyle, watchMedia)

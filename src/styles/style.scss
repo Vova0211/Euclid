@@ -1,4 +1,8 @@
 @import url(normolize.css);
+@font-face {
+    font-family: "Montserrat";
+    src: url("../src/fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+}
 @mixin bg-image($url, $pos: center, $repeat: no-repeat, $size: cover) {
     background-image: url(img-path($url));
     background-position: $pos;
@@ -17,6 +21,7 @@
 }
 * {
     box-sizing: border-box;
+    font-family: "Montserrat";
 }
 .header {
     max-width: 1920px;
@@ -35,48 +40,68 @@
         min-width: 225px;
         min-height: 72px;
     }
-    .header__search {
-        @include bg-image("header__search.svg");
-        min-width: 24px;
-        min-height: 24px;
-        cursor: pointer;
-    } 
     .nav {
         @include flex() {
             flex-wrap: nowrap;
-            gap: 80px;
+            gap: 5vw;
         }
+        .nav-list {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            @include flex() {
+                justify-content: space-around;
+                flex-wrap: nowrap;
+                gap: 5vw;
+            }
+            .nav-list__link {
+                text-decoration: none;
+                color: black;
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 100%;
+                font-weight: 600;
+                &:hover {
+                    border-bottom: 2px solid rgba(225, 153, 0, 1);
+                }
+                &:focus {
+                    border: 2px solid rgba(225, 153, 0, 1);
+                }
+                &:active {
+                    color: rgba(225, 103, 14, 1);
+                    border-bottom: 2px solid rgba(225, 103, 14, 1);
+                }
+            }
+        }
+        .header__search {
+            @include bg-image("header__search.svg");
+            min-width: 24px;
+            min-height: 24px;
+            cursor: pointer;
+            &:hover {
+                @include bg-image("header__search_hover.svg");
+            }
+            &:focus {
+                border: 2px solid rgba(255, 153, 0, 1)
+            }
+        } 
     }
-    .nav-list {
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        @include flex() {
-            justify-content: space-around;
-            flex-wrap: nowrap;
-            gap: 80px;
-        }
-        .nav-list__item {
-            font-size: 18px;
-            font-weight: 500;
-        }
-        a {
-            text-decoration: none;
-            color: black;
-            
-        }
-        
-    }
+    
 }
 .main {
     max-width: 1920px;
     padding: 0 75px;
     .hero {
+        user-select: none;
+        position: relative;
         .swiper {
             width: 100%;
             height: 620px;
             .swiper-slide {
                 border-radius: 32px;
+            }
+            .swiper-pagination span {
+                margin-left: 5px;
             }
         }
         @for $i from 1 through 3 {
@@ -84,10 +109,55 @@
                 @include bg-image("hero__img#{$i}.png")
             }
         }
+        .hero__text-place {
+            padding: 6% 80px;
+            max-width: (1770 * 0.6px);
+            pointer-events: none;
+            position: absolute;
+            z-index: 5;
+            color: white;
+            * {
+                margin: 0;
+            }
+            .hero__title {
+                font-size: 70px;
+                font-weight: 800;
+                margin-bottom: 24px;
+            }
+            .hero__descr {
+                font-size: 24px;
+                font-weight: 700;
+                margin-bottom: 90px;
+            }
+            .hero__btn {
+                color: white;
+                font-size: 23px;
+                font-weight: 700;
+                border: none;
+                background-color: rgb(255, 153, 0);
+                cursor: pointer;
+                pointer-events: auto;
+                padding: 25px 35px;
+                border-radius: 16px;
+                &:hover {
+                    background-color: rgba(255, 184, 77, 1);
+                }
+                &:focus {
+                    background: rgba(255, 184, 77, 1);
+                }
+                &:active {
+                    background: rgba(225, 103, 14, 1);
+                }
+            }
+            @media (max-width: 1773px) {
+                // padding-right: 20%;
+            }
+        }
     }
 }
 
 .burger {
+    z-index: 100;
     padding-top: 100px;
     background-color: white;
     top: 0;

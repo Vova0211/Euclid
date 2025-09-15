@@ -1,1 +1,1 @@
-@media (max-width:1024px){.nav .nav-list{display:none}.burger-btn{display:flex}}
+@media (max-width:1024px){.header{padding:0 50px}.header .nav .nav-list{display:none}.burger-btn{display:flex}.main{padding:0 50px}.main .hero .swiper{height:668px}.main .hero .hero__text-place{padding:160px 70px}.main .hero .hero__text-place .hero__title{font-weight:800;font-size:60px;line-height:100%;margin-bottom:16px}.main .hero .hero__text-place .hero__descr{font-weight:700;font-size:20px;line-height:100%;margin-bottom:60px}}
