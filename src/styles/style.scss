@@ -1,6 +1,5 @@
 @import url(normolize.css);
-@import url(media.css);
-@mixin bg-image($url, $pos: center, $repeat: no-repeat, $size: contain) {
+@mixin bg-image($url, $pos: center, $repeat: no-repeat, $size: cover) {
     background-image: url(img-path($url));
     background-position: $pos;
     background-repeat: $repeat;
@@ -73,42 +72,47 @@
     max-width: 1920px;
     padding: 0 75px;
     .hero {
-        user-select: none;
-        width: 100%;
-        overflow-x: hidden;
-        .hero__track {
+        .swiper {
             width: 100%;
-            @include flex(){
-                flex-wrap: nowrap;
+            height: 620px;
+            .swiper-slide {
+                border-radius: 32px;
             }
         }
-        .hero__img {
-            width: 100%;
-            border-radius: 32px;
-            pointer-events: none;
-        }
         @for $i from 1 through 3 {
-            .hero__img#{$i} {
-                @include bg-image("hero__img#{$i}.png");
+            .swiper-slide:nth-child(#{$i}) {
+                @include bg-image("hero__img#{$i}.png")
             }
         }
     }
 }
+
 .burger {
+    padding-top: 100px;
+    background-color: white;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding-left: 75px;
     position: absolute;
-    width: 40%;
-    border-right: 1px solid gray;
-    .burder-nav {
+    width: 35%;
+    border-right: 2px solid rgba(128, 128, 128, 0.5);
+    .burger-nav {
         @include flex() {
             flex-direction: column;
             justify-content: space-around;
+            gap: 20px;
         }
-        .burger-nav__item{
+        .burger-nav__item {
             color: black;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
         }
     }
 }
-.burder-btn {
+.burger-btn {
+    z-index: 1000;
     display: none;
     flex-direction: column;
     justify-content: space-around;
@@ -116,8 +120,22 @@
     height: 20px;
     cursor: pointer;
     .burger-btn__line {
+        user-select: none;
         width: 100%;
         height: 3px;
         background-color: black;
+    }
+}
+.opened {
+    justify-content: center;
+    align-items: center;
+    .burger-btn__line:nth-last-child(1) {
+        display: none;
+    }
+    .burger-btn__line:first-child {
+        transform: rotate(45deg) translateY(2px);
+    }
+    .burger-btn__line:nth-child(2) {
+        transform: rotate(135deg);
     }
 }

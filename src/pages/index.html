@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css">
     <link rel="shortcut icon" href="../src/utils/favicon.svg" type="image/svg-xml">
-    <script defer src="index.js"></script>
+    <script type="module" defer src="index.js"></script>
     <title>Евклид</title>
 </head>
 <body>
     <header class="header">
-        <div class="burder-btn">
+        <div class="burger-btn">
             <div class="burger-btn__line"></div>
             <div class="burger-btn__line"></div>
             <div class="burger-btn__line"></div>
@@ -26,17 +28,17 @@
             <div class="header__search"></div>
         </nav>
     </header>
-    <main class="main d-none">
+    <main class="main">
         <div class="hero">
             <div class="swiper">
-                <div class="swiper__wrapper">
-                    <div class="hero__img hero__img1"></div>
-                    <div class="hero__img hero__img2"></div>
-                    <div class="hero__img hero__img3"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide hero__img hero__img1"></div>
+                    <div class="swiper-slide hero__img hero__img2"></div>
+                    <div class="swiper-slide hero__img hero__img3"></div>
                 </div>
-                <h1 class="hero__title"></h1>
-                <p class="hero__descr"></p>
-                <button type="button" class="hero__btn"></button>
+                <!-- <h1 class="hero__title"></h1> -->
+                <!-- <p class="hero__descr"></p> -->
+                <!-- <button type="button" class="hero__btn"></button> -->
             </div>
         </div>
     </main>
@@ -46,7 +48,7 @@
 </body>
 <template id="burger">
     <div class="burger">
-        <nav class="burder-nav">
+        <nav class="burger-nav">
             <a href="" class="burger-nav__item">О нас</a>
             <a href="" class="burger-nav__item">Этапы</a>
             <a href="" class="burger-nav__item">Вопросы</a>

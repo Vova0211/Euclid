@@ -1,1 +1,1 @@
-import Swiper from"swiper";
+import Swiper from"https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.mjs";function burger(){let t=document.querySelector(".header"),n=document.querySelector(".burger-btn");n.addEventListener("click",e=>{var r=document.getElementById("burger").content.cloneNode(!0);n.classList.toggle("opened"),[...n.classList].includes("opened")?t.appendChild(r):document.querySelector(".burger").remove()})}burger();let swiper=new Swiper(".swiper",{direction:"horizontal",loop:!0});
