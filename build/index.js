@@ -1,1 +1,1 @@
-function heroSwipe(){let n=document.querySelector(".hero__track"),t;function o(e){e=e.clientX/window.innerWidth*360;n.style=`transform: translateX(${e-t}px);`}n.addEventListener("mousedown",e=>{t=getMouseX(e),n.addEventListener("mousemove",o),n.removeEventListener("mouseup",o),n.addEventListener()})}function getMouseX(e){return e.clientX/window.innerWidth*360}
+import Swiper from"swiper";

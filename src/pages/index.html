@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../src/utils/favicon.svg" type="image/svg-xml">
     <script defer src="index.js"></script>
     <title>Евклид</title>
 </head>
 <body>
     <header class="header">
+        <div class="burder-btn">
+            <div class="burger-btn__line"></div>
+            <div class="burger-btn__line"></div>
+            <div class="burger-btn__line"></div>
+        </div>
         <div class="header__logo"></div>
         <nav class="nav">
             <ul class="nav-list">
@@ -16,16 +22,18 @@
                 <li class="nav-list__item"><a class="nav-list__link" href="">Этапы</a></li>
                 <li class="nav-list__item"><a class="nav-list__link" href="">Вопросы</a></li>
                 <li class="nav-list__item"><a class="nav-list__link" href="">Оставить заявку</a></li>
-                <li class="nav-list__item nav-list__search"></li>
             </ul>
+            <div class="header__search"></div>
         </nav>
     </header>
-    <main class="main">
+    <main class="main d-none">
         <div class="hero">
-            <div class="hero__track">
-                <img class="hero__img hero__img1"></img>
-                <img class="hero__img hero__img2"></img>
-                <img class="hero__img hero__img3"></img>
+            <div class="swiper">
+                <div class="swiper__wrapper">
+                    <div class="hero__img hero__img1"></div>
+                    <div class="hero__img hero__img2"></div>
+                    <div class="hero__img hero__img3"></div>
+                </div>
                 <h1 class="hero__title"></h1>
                 <p class="hero__descr"></p>
                 <button type="button" class="hero__btn"></button>
@@ -36,4 +44,15 @@
 
     </footer>
 </body>
+<template id="burger">
+    <div class="burger">
+        <nav class="burder-nav">
+            <a href="" class="burger-nav__item">О нас</a>
+            <a href="" class="burger-nav__item">Этапы</a>
+            <a href="" class="burger-nav__item">Вопросы</a>
+            <a href="" class="burger-nav__item">Оставить заявку</a>
+            <a href="" class="burger-nav__item">Контакты</a>
+        </nav>
+    </div>
+</template>
 </html>

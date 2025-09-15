@@ -1,4 +1,5 @@
 @import url(normolize.css);
+@import url(media.css);
 @mixin bg-image($url, $pos: center, $repeat: no-repeat, $size: contain) {
     background-image: url(img-path($url));
     background-position: $pos;
@@ -12,6 +13,9 @@
     display: flex; 
     @content;
 } 
+.d-none {
+    display: none;
+}
 * {
     box-sizing: border-box;
 }
@@ -32,6 +36,18 @@
         min-width: 225px;
         min-height: 72px;
     }
+    .header__search {
+        @include bg-image("header__search.svg");
+        min-width: 24px;
+        min-height: 24px;
+        cursor: pointer;
+    } 
+    .nav {
+        @include flex() {
+            flex-wrap: nowrap;
+            gap: 80px;
+        }
+    }
     .nav-list {
         padding: 0;
         margin: 0;
@@ -50,25 +66,21 @@
             color: black;
             
         }
-        .nav-list__search {
-            @include bg-image("nav-list__search.svg");
-            min-width: 24px;
-        } 
+        
     }
 }
 .main {
     max-width: 1920px;
     padding: 0 75px;
     .hero {
-        // transform: skewX(10px);
         user-select: none;
         width: 100%;
         overflow-x: hidden;
         .hero__track {
+            width: 100%;
             @include flex(){
                 flex-wrap: nowrap;
             }
-            // transform: translateX(-100px);
         }
         .hero__img {
             width: 100%;
@@ -77,8 +89,35 @@
         }
         @for $i from 1 through 3 {
             .hero__img#{$i} {
-                content: url(img-path("hero__img#{$i}.png"));
+                @include bg-image("hero__img#{$i}.png");
             }
         }
+    }
+}
+.burger {
+    position: absolute;
+    width: 40%;
+    border-right: 1px solid gray;
+    .burder-nav {
+        @include flex() {
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .burger-nav__item{
+            color: black;
+        }
+    }
+}
+.burder-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    .burger-btn__line {
+        width: 100%;
+        height: 3px;
+        background-color: black;
     }
 }

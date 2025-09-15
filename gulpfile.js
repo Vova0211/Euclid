@@ -27,6 +27,7 @@ function cleanHTML() {
 function watchStyle() { watch('src/styles/style.scss', buildStyles)}
 function watchJS() {  watch('src/js/index.js', cleanJs)}
 function watchHTML() {  watch('src/pages/index.html', cleanHTML)}
+function watchMedia() { watch('src/styles/media.css', buildStyles)}
 // function() {watch('build/*', browsersync)}
 
 /*
@@ -40,4 +41,4 @@ function browsersync() {
 exports.cleanHTML = cleanHTML;
 exports.browsersync = browsersync;*/
 exports.build = series(buildStyles, cleanJs, cleanHTML)
-exports.default = parallel(watchHTML, watchJS, watchStyle)
+exports.default = parallel(watchHTML, watchJS, watchStyle, watchMedia)
