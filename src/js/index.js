@@ -1,4 +1,5 @@
-import Swiper from "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.mjs"
+import Swiper from "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.mjs";
+// import Accordion from "https://unpkg.com/accordion-js@3.4.1/dist/accordion.min.js";
 function burger() {
   const header = document.querySelector(".header");
   const burgerBtn = document.querySelector(".burger-btn");
@@ -18,5 +19,7 @@ const swiper = new Swiper('.swiper', {
   loop: true,
   pagination: {
     el: '.swiper-pagination',
+    clickable: true,
   },
 })
+new Accordion(".accordion-container")

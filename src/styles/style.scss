@@ -1,3 +1,4 @@
+// @import url(https://unpkg.com/accordion-js@3.4.1/dist/accordion.min.css);
 @import url(normolize.css);
 @font-face {
     font-family: "Montserrat";
@@ -88,10 +89,18 @@
     }
     
 }
+.swiper-wrapper {
+    @for $i from 1 through 3 {
+        .hero__img#{$i} {
+            @include bg-image("hero__img#{$i}.png")
+        }
+    }
+}
 .main {
     max-width: 1920px;
     padding: 0 75px;
     .hero {
+        margin-bottom: 50px;
         user-select: none;
         position: relative;
         .swiper {
@@ -102,11 +111,6 @@
             }
             .swiper-pagination span {
                 margin-left: 5px;
-            }
-        }
-        @for $i from 1 through 3 {
-            .swiper-slide:nth-child(#{$i}) {
-                @include bg-image("hero__img#{$i}.png")
             }
         }
         .hero__text-place {
@@ -151,6 +155,28 @@
             }
             @media (max-width: 1773px) {
                 // padding-right: 20%;
+            }
+        }
+    }
+    .accordion {
+        margin-bottom: 100px;
+        .ac {
+            padding: 15px 0;
+            margin-bottom: 0;
+            border: none;
+            border-top: 1px solid rgba(128, 128, 128, 0.3);
+            &:last-child {
+                border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+            }
+        }
+        .is-active {
+            border-top: 1px solid rgba(225, 153, 14, 1);
+            border-bottom: 1px solid rgba(225, 153, 14, 1);       
+            .ac-trigger {
+                color: rgba(225, 153, 14, 1);
+            }
+            &:last-child {
+                border-bottom: 1px solid rgba(225, 153, 14, 1);   
             }
         }
     }
